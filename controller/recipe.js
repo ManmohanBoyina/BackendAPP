@@ -4,11 +4,11 @@ const Recipe = require("../model/Recipe");
 const recipeCtrl = {
   //! Submit Recipe
   submitRecipe: asyncHandler(async (req, res) => {
-    const { recipename, ingredientLines, imageUrl, instructions } = req.body;
+    const { recipename, ingredientLines, imageUrl, instructions, email } = req.body;
 
     //! Validations
-    if (!recipename || !ingredientLines || !imageUrl || !instructions) {
-      return res.status(400).json({ message: "All fields are required" });
+    if (!recipename || !ingredientLines || !imageUrl || !instructions || !email) {
+      return res.status(400).json({ message: "All fields are required, including email" });
     }
 
     //! Create the recipe
@@ -18,6 +18,7 @@ const recipeCtrl = {
         ingredientLines,
         imageUrl,
         instructions,
+        email,
       });
 
       //! Send the response
@@ -30,6 +31,7 @@ const recipeCtrl = {
       res.status(500).json({ message: "Failed to add recipe" });
     }
   }),
+
 };
 
 module.exports = recipeCtrl;
