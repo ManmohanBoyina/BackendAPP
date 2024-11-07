@@ -1,16 +1,11 @@
 const mongoose = require("mongoose");
 
-const recipeSchema = new mongoose.Schema(
-  {
-    recipename: { type: String, required: true }, // Keep this as-is
-    ingredientLines: { type: [String], required: true }, // Array of strings for ingredients
-    imageUrl: { type: String, required: true }, // Consistent camelCase
-    instructions: { type: String, required: true }, // Consistent camelCase
-  },
-  {
-    timestamps: true, // Automatically adds createdAt and updatedAt fields
-  }
-);
+const RecipeSchema = new mongoose.Schema({
+  recipename: { type: String, required: true },
+  ingredientLines: { type: [String], required: true },
+  imageUrl: { type: String, required: true },
+  instructions: { type: String, required: true },
+  email: { type: String, required: true }, // Add email field
+});
 
-// Compile to form the model
-module.exports = mongoose.model("Recipe", recipeSchema);
+module.exports = mongoose.model("Recipe", RecipeSchema);
