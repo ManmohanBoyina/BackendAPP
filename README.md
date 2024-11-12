@@ -33,11 +33,11 @@ In first terminal: node --watch app
 In second terminal: npx localtunnel --port 8000
 </code></pre>
 
+<h2>Usage</h2>
+<p>This application provides API endpoints that can be integrated with front-end applications to manage data efficiently. Use <code>/api/resource</code> endpoints for CRUD operations, allowing easy data retrieval, updates, and deletions. Refer to the API documentation for detailed endpoint information.</p>
+
 <h2>Contributing</h2>
 <p>Feel free to fork the project, create a new branch, and submit a pull request. All contributions are welcome!</p>
-
-<h2>License</h2>
-<p>This project is licensed under the MIT License - see the <a href="https://github.com/ManmohanBoyina/BackendAPP/blob/main/LICENSE">LICENSE</a> file for details.</p>
 
 <h2>Contact</h2>
 <p>Created by <a href="https://github.com/ManmohanBoyina">Manmohan Boyina</a> - feel free to reach out!</p>
