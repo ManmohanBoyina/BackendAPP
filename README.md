@@ -29,8 +29,8 @@
 
 <pre><code>git clone https://github.com/ManmohanBoyina/BackendAPP.git
 cd BackendAPP
-npm install
-npm start
+In first terminal: node --watch app
+In second terminal: npx localtunnel --port 8000
 </code></pre>
 
 <h2>Contributing</h2>
