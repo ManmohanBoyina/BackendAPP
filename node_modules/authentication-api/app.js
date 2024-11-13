@@ -17,7 +17,6 @@ app.use("/", router);
 
 //! Error handler
 app.use(errorHandler);
-
 //! Start the server
 const PORT = 8000;
 app.listen(PORT, () => console.log(`Server is up and running on port ${PORT}`));

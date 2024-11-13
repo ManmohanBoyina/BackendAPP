@@ -7,16 +7,20 @@ const recipeCtrl = {
     const { recipename, ingredientLines, imageUrl, instructions, email } = req.body;
 
     //! Validations
-    if (!recipename || !ingredientLines || !imageUrl || !instructions || !email) {
+    if (!recipename || !ingredientLines || !instructions || !email) {
       return res.status(400).json({ message: "All fields are required, including email" });
     }
+
+    //! Set default image URL if not provided
+    const defaultImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/450px-Good_Food_Display_-_NCI_Visuals_Online.jpg";
+    const finalImageUrl = imageUrl || defaultImageUrl;
 
     //! Create the recipe
     try {
       const newRecipe = await Recipe.create({
         recipename,
         ingredientLines,
-        imageUrl,
+        imageUrl: finalImageUrl,
         instructions,
         email,
       });
@@ -31,7 +35,6 @@ const recipeCtrl = {
       res.status(500).json({ message: "Failed to add recipe" });
     }
   }),
-
 };
 
 module.exports = recipeCtrl;
