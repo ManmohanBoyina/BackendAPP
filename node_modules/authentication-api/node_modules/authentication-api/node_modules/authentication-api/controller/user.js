@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 const User = require("../model/User");
+const UserDetails = require("../model/UserDetails"); // Import UserDetails model
 
 const userCtrl = {
   //! Register
@@ -30,12 +31,20 @@ const userCtrl = {
       email,
     });
 
+    //! Add a document in UserDetails collection
+    const userDetails = await UserDetails.create({
+      userId: userCreated._id, // Link to the User document
+      email: userCreated.email,
+      // Add any other initial fields you'd like in UserDetails
+    });
+
     //! Send the response
     console.log("userCreated", userCreated);
     res.status(201).json({
       username: userCreated.username,
       email: userCreated.email,
       id: userCreated.id,
+      userDetailsId: userDetails._id, // Return UserDetails document ID if needed
     });
   }),
 
